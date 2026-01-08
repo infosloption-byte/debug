@@ -1,0 +1,24 @@
+<?php
+
+Route::group(['middleware' => ['web']], function()
+{
+    Route::group(['prefix' => '{{prefix}}', 'namespace' => 'App\Modules\{{namespace}}\Controllers'], function(){
+
+      	Route::get('index', '{{controller}}@index')->name('{{prefix}}.index');
+
+      	Route::get('get-data', '{{controller}}@getData')->name('{{prefix}}.index');
+
+      	Route::get('get-by-id', '{{controller}}@getDataById')->name('{{prefix}}.index');
+		
+		Route::post('upload', '{{controller}}@upload')->name('{{prefix}}.index');
+
+		Route::post('delete/{id}', '{{controller}}@delete')->name('{{prefix}}.delete');
+
+		Route::post('update/{id}', '{{controller}}@update')->name('{{prefix}}.update');
+
+		Route::post('create', '{{controller}}@create')->name('{{prefix}}.create');
+
+    });
+
+});
+

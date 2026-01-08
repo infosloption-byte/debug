@@ -1,0 +1,20 @@
+{
+    "name": "system/hierarchy-manage",
+    "description": "Admin Panel Employee Hierarchy Management",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "",
+            "email": ""
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "System\\Hierarchy\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/support" : "~5"
+    }
+}

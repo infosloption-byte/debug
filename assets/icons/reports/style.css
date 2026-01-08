@@ -1,0 +1,176 @@
+@font-face {
+  font-family: 'icomoonrep';
+  src:  url('fonts/icomoon.eot?1l8u4x');
+  src:  url('fonts/icomoon.eot?1l8u4x#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?1l8u4x') format('truetype'),
+    url('fonts/icomoon.woff?1l8u4x') format('woff'),
+    url('fonts/icomoon.svg?1l8u4x#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="iconrep-"], [class*=" iconrep-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoonrep' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconrep-analytics:before {
+  content: "\e900";
+}
+.iconrep-chart:before {
+  content: "\e901";
+}
+.iconrep-growth:before {
+  content: "\e902";
+}
+.iconrep-result:before {
+  content: "\e903";
+}
+.iconrep-bar-graph:before {
+  content: "\e904";
+}
+.iconrep-bar:before {
+  content: "\e905";
+}
+.iconrep-bar-1:before {
+  content: "\e906";
+}
+.iconrep-bar-2:before {
+  content: "\e907";
+}
+.iconrep-growth-1:before {
+  content: "\e908";
+}
+.iconrep-chart-1:before {
+  content: "\e909";
+}
+.iconrep-chart-2:before {
+  content: "\e90a";
+}
+.iconrep-coin:before {
+  content: "\e90b";
+}
+.iconrep-compare:before {
+  content: "\e90c";
+}
+.iconrep-chart-3:before {
+  content: "\e90d";
+}
+.iconrep-graph:before {
+  content: "\e90e";
+}
+.iconrep-graph-1:before {
+  content: "\e90f";
+}
+.iconrep-organization:before {
+  content: "\e910";
+}
+.iconrep-performance:before {
+  content: "\e911";
+}
+.iconrep-data:before {
+  content: "\e912";
+}
+.iconrep-diagram:before {
+  content: "\e913";
+}
+.iconrep-diagram-1:before {
+  content: "\e914";
+}
+.iconrep-distance:before {
+  content: "\e915";
+}
+.iconrep-distribute:before {
+  content: "\e916";
+}
+.iconrep-filter:before {
+  content: "\e917";
+}
+.iconrep-frequency:before {
+  content: "\e918";
+}
+.iconrep-graph-2:before {
+  content: "\e919";
+}
+.iconrep-graph-3:before {
+  content: "\e91a";
+}
+.iconrep-fluctuation:before {
+  content: "\e91b";
+}
+.iconrep-data-1:before {
+  content: "\e91c";
+}
+.iconrep-hierarchical-structure:before {
+  content: "\e91d";
+}
+.iconrep-chart-4:before {
+  content: "\e91e";
+}
+.iconrep-graph-4:before {
+  content: "\e91f";
+}
+.iconrep-intersection:before {
+  content: "\e920";
+}
+.iconrep-circle:before {
+  content: "\e921";
+}
+.iconrep-network:before {
+  content: "\e922";
+}
+.iconrep-organization-1:before {
+  content: "\e923";
+}
+.iconrep-pie-chart:before {
+  content: "\e924";
+}
+.iconrep-pie-chart-1:before {
+  content: "\e925";
+}
+.iconrep-pie-chart-2:before {
+  content: "\e926";
+}
+.iconrep-pie-chart-3:before {
+  content: "\e927";
+}
+.iconrep-pie-chart-4:before {
+  content: "\e928";
+}
+.iconrep-workflow:before {
+  content: "\e929";
+}
+.iconrep-pyramid:before {
+  content: "\e92a";
+}
+.iconrep-pyramid-1:before {
+  content: "\e92b";
+}
+.iconrep-chart-5:before {
+  content: "\e92c";
+}
+.iconrep-structure:before {
+  content: "\e92d";
+}
+.iconrep-timeline:before {
+  content: "\e92e";
+}
+.iconrep-timeline-1:before {
+  content: "\e92f";
+}
+.iconrep-statistics:before {
+  content: "\e930";
+}
+.iconrep-workflow-1:before {
+  content: "\e931";
+}

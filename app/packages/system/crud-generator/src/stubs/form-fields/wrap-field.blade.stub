@@ -1,0 +1,4 @@
+<div class="form-group">
+    {!! Form::label('%1$s', %2$s, ['class' => 'control-label']) !!}
+    %3$s
+</div>

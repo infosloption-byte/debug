@@ -1,0 +1,355 @@
+@extends('master.master')
+
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{asset('assets/dist/segmented-js/segment.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/dist/select2/select2.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/dist/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
+
+<style type="text/css">
+  
+    .file_input_div {
+        margin: auto;
+        width: 250px;
+        height: 40px;
+    }
+
+    .file_input {
+        float: left;
+    }
+
+    #file_input_text_div {
+        width: 200px;
+        margin-top: -8px;
+        margin-left: 5px;
+    }
+
+    .none {
+        display: none;
+    }
+
+</style>
+@stop
+
+
+@section('content')
+<div ng-app="ngApp" ng-controller="NgController"> 
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <h2>
+                    <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"></a> %%crudNameCap%% 
+                </h2>
+            </div>            
+            <div class="col-lg-6 col-md-4 col-sm-12 hidden-sm">
+                <div class="float-right">
+                    <ul class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="{{{url('/')}}}"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item">%%crudNameCap%%<</li>
+                        <li class="breadcrumb-item active">List</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+             <div class="card" id="panel">
+                <div class="header">
+                    <h2>%%crudNameCap%%</h2>
+                    <ul class="header-dropdown">
+                        
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table m-b-0 c_list">
+                            <thead>
+                                <tr>
+                                   <th>id</th><th>name</th>%%formHeadingHtml%%<th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in details">
+                                    <td>@{{item.id}}</td>
+                                    <td>@{{item.name}}</td>
+                                    %%formBodyHtml%%
+                                    <td>
+                                        <button type="button" class="btn btn-info btn-edit" title="Edit"
+                                        ng-click="edit(item)"><i class="fa fa-edit"></i></button>
+
+                                        <button type="button" data-type="confirm" 
+                                        class="btn btn-danger js-sweetalert btn-delete" 
+                                         ng-click="delete(item)"
+                                        title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>   
+
+        </div>
+    </div> 
+
+    <div class="zoom">
+      <a class="zoom-fab zoom-btn-md " style="background: black;color:white" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Create New" id="btn-add"
+      ng-click="add()"><i class="fas fa-plus"></i></a>
+    </div>
+
+    <div class="modal fade" id="modal-add">
+        <div class="modal-dialog">
+            <div class="dialog-loader">
+                <div class="m-t-30 text-center"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+            </div>
+            <div class="modal-content">
+                <div class="modal-header text-left">
+                    <h4 class="modal-title">Upload Products</h4>
+                </div>
+                <form method="POST" role="form" id="form-add">
+                    <div class="modal-body">
+                        %%formFieldsHtml%%
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-edit">
+        <div class="modal-dialog">
+            <div class="dialog-loader">
+                <div class="m-t-30 text-center"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+            </div>
+            <div class="modal-content">
+                <div class="modal-header text-left">
+                    <h4 class="modal-title">Update Product</h4>
+                </div>
+                <form method="POST" role="form" id="form-edit">
+                    <input type="hidden" id="pro_id" name="pro_id">
+                    <div class="modal-body">
+                        %%formFieldsHtml%%
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@stop
+
+
+@section('js')
+
+<script src="{{asset('/assets/dist/angular/angular/angular.min.js')}}"></script>
+<script src="{{asset('/assets/admin_panel/dist/select2/select2.min.js')}}"></script>
+<script src="{{asset('assets/admin_panel/dist/bootsrap-fileinput/js/fileinput.min.js')}}"></script>
+<script src="{{asset('assets/admin_panel/dist/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('assets/js/dialog.js')}}"></script>
+<script src="{{asset('assets/dist/moment/moment.js')}}"></script>
+<script src="{{asset('assets/dist/angular-moment/angular-moment.min.js')}}"></script>
+<script src="{{asset('assets/dist/segmented-js/segment.js')}}"></script>
+<script src="{{asset('assets/dist/classie/classie.js')}}"></script>
+<script src="{{asset('assets/dist/ng-image/angular.img-fallback.js')}}"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    $(".select2").select2({
+        width: 'resolve'
+    });
+
+    $('#fileToUpload').change(function(e){
+        $('#file_prev').val(e.target.files[0].name);
+    });
+        
+});
+
+var app = angular.module("ngApp",['angularMoment','angularImgFallback']);
+//controller
+app.controller("NgController", function($scope,$http){
+
+    $scope.details = null;
+    $scope.record  = null;
+    $scope.id      = null;
+
+
+    //DUMMY
+    $scope.details = [{'id':1,'name':'DUMMY'}];
+
+
+    $scope.loadData = function(){
+        /*LOAD DATA TO TABLE
+        $.ajax({
+            url: "{{url('/%%routeGroup%%get-data')}}",
+            type: 'GET',
+            data: {},
+            success: function (data) {
+                $scope.details = data.data;
+                $scope.$apply();
+            },
+            error:function(data) {
+              $('.dialog-loader').hide();
+            }
+        });
+        */
+    };
+
+    $scope.loadData();
+
+    $("form#form-add").submit(function(e) {
+        e.preventDefault();    
+        $('.dialog-loader').show();
+        var formData = new FormData(this);
+        $.ajax({
+            url: "{{url('/%%routeGroup%%create')}}",
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+                $('.dialog-loader').hide();
+                swal({
+                    title: "Success!",
+                    text: "Record Added ",
+                });
+                location.reload();
+            },
+            error:function(data) {
+              $('.dialog-loader').hide();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+        
+        return false;
+    });
+
+    $scope.edit = function(item) {
+        $scope.id = item.id;
+
+        $('#modal-edit').modal('show'); //DELETE THIS WHEN DEVELOPMENT
+
+        /*LOAD UPDATE ITEM
+        $.ajax({
+            url: "{{url('/%%routeGroup%%get-by-id')}}",
+            type: 'GET',
+            data: {id:item.id},
+            success: function (data) {
+                $scope.record = data.data;
+                $scope.$apply();
+                $('#modal-edit').modal('show');
+            },
+            error:function(data) {
+              $('.dialog-loader').hide();
+            }
+        });
+        */
+        
+    };
+
+    $scope.delete = function(item) {
+        $scope.id = item.id;
+    };
+
+    $scope.add = function() {
+        $scope.item = null;
+        $('#modal-add').modal('show');
+    };
+
+    $("form#form-edit").submit(function(e) {
+        e.preventDefault();    
+        $('.dialog-loader').show();
+        var formData = new FormData(this);
+        $.ajax({
+            url: "{{url('/%%routeGroup%%update')}}/"+$scope.id,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+                $('.dialog-loader').hide();
+                swal({
+                    title: "Success!",
+                    text: "Record Updated ",
+                });
+                location.reload();
+            },
+            error:function(data) {
+              $('.dialog-loader').hide();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+        
+        return false;
+    });
+        
+});//end controller
+
+</script>
+@stop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

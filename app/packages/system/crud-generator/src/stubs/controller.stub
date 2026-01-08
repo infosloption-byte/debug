@@ -1,0 +1,122 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyRootNamespaceHttp\Requests;
+use DummyRootNamespaceHttp\Controllers\Controller;
+
+use DummyRootNamespaceModules\{{modelNamespace}}\Models\{{modelName}};
+use DummyRootNamespaceModules\{{modelNamespace}}\BusinessLogics\DummyClassLogic;
+use Illuminate\Http\Request;
+use Session;
+
+class DummyClass extends Controller
+{
+
+    protected $logic;
+
+    public function __construct(DummyClassLogic $logic)
+    {
+        $this->logic = $logic;
+        
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(Request $request)
+    {
+        return view('{{modelNamespace}}::{{viewName}}.index');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function create(Request $request)
+    {
+        {{validationRules}}
+        $requestData = $request->all();
+        {{fileSnippet}}
+        {{modelName}}::create($requestData);
+
+        return response()->json(['status'=>1]);
+    }
+
+    public function getData(Request $request)
+    {
+        $keyword = $request->get('search');
+        $perPage = {{pagination}};
+
+        if (!empty($keyword)) {
+            ${{crudName}} = {{modelName}}::{{whereSnippet}}paginate($perPage);
+        } else {
+            ${{crudName}} = {{modelName}}::paginate($perPage);
+        }
+
+        return response()->json(${{crudName}});
+    }
+
+
+    public function getDataById(Request $request)
+    {
+
+        ${{crudName}} = {{modelName}}::find($request->id);
+
+        return response()->json(['data'=>${{crudName}}]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show($id)
+    {
+        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+
+        return view('{{modelNamespace}}::{{viewName}}.show', compact('{{crudNameSingular}}'));
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function edit($id, Request $request)
+    {
+        {{validationRules}}
+        $requestData = $request->all();
+        {{fileSnippet}}
+        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        ${{crudNameSingular}}->update($requestData);
+
+
+        return response()->json(['status'=>1]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function delete($id)
+    {
+        $item = {{modelName}}::find($id);
+        $item->delete();
+
+        return response()->json(['status'=>1]);
+    }
+}

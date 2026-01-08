@@ -1,0 +1,46 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 28/04/2019 11:34
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-size: 40px !important;
+  font-style: normal;
+  display: inline-block;
+
+}
+
+.flaticon-md:before { content: "\f100"; }
+.flaticon-hotel-building:before { content: "\f101"; }
+.flaticon-menu-interface-symbol-of-four-horizontal-lines-with-dots:before { content: "\f102"; }
+.flaticon-speedometer:before { content: "\f103"; }
+.flaticon-wireless-signal-interface-status-symbol-of-bars-group:before { content: "\f104"; }
+.flaticon-dollar-bill:before { content: "\f105"; }
+.flaticon-sun-black-shape:before { content: "\f106"; }
+.flaticon-telephone:before { content: "\f107"; }
+.flaticon-tag:before { content: "\f108"; }
+.flaticon-calendar:before { content: "\f109"; }
+.flaticon-heart:before { content: "\f10a"; }
+.flaticon-paper-plane:before { content: "\f10b"; }
+.flaticon-watch:before { content: "\f10c"; }
